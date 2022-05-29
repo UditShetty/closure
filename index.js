@@ -8,6 +8,7 @@
 
 
 // creating another function for fectching the data
+let id;
 async function sepearteMovie(q){ 
 
     // for fetching the data we prepare the url 
@@ -57,4 +58,17 @@ async function main(){
     // console.log(data)
 
     appendMovies(data)
+}
+
+// main('a')->setTimeout(main,1000,'a')->id->data
+// main('av')->doihave prev timeout id->setTimeout(main,1000,'av')→>id
+// main('ave')
+
+function debouncing(func,delay){
+if(id){
+    clearTimeout(id)
+}
+    id=setTimeout(function(){
+        func()
+    },delay)
 }
