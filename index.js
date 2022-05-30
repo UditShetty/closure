@@ -31,6 +31,7 @@ console.log(err)
 
 // we have data in console now we have to append it 
 let movie_div= document.getElementById("container")
+var arr= JSON.parse(localStorage.getItem("movie"))||[]
 function appendMovies(movies){
 
     movie_div.innerHTML= null // this will be doing because we have getting all the related search movie data and we want only the search movie so doing null innerhtml will give the empty the movie_div 
@@ -40,9 +41,20 @@ function appendMovies(movies){
   movies.forEach(function(elem){  //in this if we have not getting the undefined value than it will show the data in div 
       let p= document.createElement("p")
       p.innerText=elem.Title
+      p.addEventListener("click",function(){
+          arr.push(elem)
+          console.log(arr)
+          var movie=localStorage.setItem("movie",JSON.stringify(arr))
+          console.log(movie)
+          window.location.href="movie.html"
+
+
+      })
 
       movie_div.append(p)
+     
   })
+  
 }
 
 // create a main fun for accept the input
